@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module serialisation"""
+"""Module serialisation json"""
 
 import json
 
