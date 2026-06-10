@@ -10,7 +10,7 @@ def fetch_and_print_posts():
     response = requests.get(url)
     if response.status_code == 200:
         posts = response.json()
-        for post in posts[:10]:
+        for post in posts:
             print(post.get('title'))
 
 
@@ -24,13 +24,12 @@ def fetch_and_save_posts():
         list_filtred = []
         for post in posts:
             list_filtred.append({
-                'userId': post.get('userId'),
                 'id': post.get('id'),
                 'title': post.get('title'),
                 'body': post.get('body')
             })
         with open('posts.csv', 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['userId', 'id', 'title', 'body']
+            fieldnames = ['id', 'title', 'body']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             for post in list_filtred:
